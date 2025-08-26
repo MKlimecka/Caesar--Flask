@@ -1,14 +1,15 @@
 KEY =3
-POLISH_CHARACTERS = set("ąćęłńóśźż")
-message = "".join([c for c in input("message: ").lower() if c.isalpha()])
+POLISH_ALPHABET = "aąbcćdeęfghijklłmnńoóprsśtuwxyzźż"
+STANDARD_ALPHABET = "abcdefghijklmnoprstuwxyz"
 
 
-def caesar_cipher(message, key=KEY):
+def caesar_cipher(text: str, key=KEY, use_polish: bool=False):
+    message = "".join([c for c in text.lower() if c.isalpha()])
     encrypted_message=""
-    if contains_polish_characters(message):
-        alphabet = "aąbcćdeęfghijklłmnńoóprsśtuwxyzźż"
-    else:
-        alphabet = "abcdefghijklmnoprstuwxyz"
+    if use_polish:
+        alphabet = POLISH_ALPHABET
+    else: 
+        alphabet = STANDARD_ALPHABET
     for char in message:
         if char in alphabet:
             index = alphabet.index(char)
@@ -17,19 +18,13 @@ def caesar_cipher(message, key=KEY):
     return encrypted_message
 
 
-def contains_polish_characters(message):
-    for char in message:
-        if char in POLISH_CHARACTERS:
-            return True
-        return False
-    
-
-def caesar_cipher_decypted(message, key=KEY):
+def caesar_cipher_decypted(text: str, key=KEY, use_polish: bool=False):
+    message = "".join([c for c in text.lower() if c.isalpha()])
     encrypted_message=""
-    if contains_polish_characters(message):
-        alphabet = "aąbcćdeęfghijklłmnńoóprsśtuwxyzźż"
-    else:
-        alphabet = "abcdefghijklmnoprstuwxyz"
+    if use_polish:
+        alphabet = POLISH_ALPHABET
+    else: 
+        alphabet = STANDARD_ALPHABET
     for char in message:
         if char in alphabet:
             index = alphabet.index(char)
@@ -37,8 +32,3 @@ def caesar_cipher_decypted(message, key=KEY):
             encrypted_message += alphabet[new_index]
     return encrypted_message
     
-
-print(contains_polish_characters(message)) 
-print(caesar_cipher(message))
-print(caesar_cipher_decypted(caesar_cipher(message)))
-
