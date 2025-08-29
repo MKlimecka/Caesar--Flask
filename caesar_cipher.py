@@ -3,8 +3,8 @@ POLISH_ALPHABET = "aąbcćdeęfghijklłmnńoóprsśtuwxyzźż"
 STANDARD_ALPHABET = "abcdefghijklmnoprstuwxyz"
 
 
-def caesar_cipher(text: str, key=KEY, use_polish: bool=False):
-    message = "".join([c for c in text.lower() if c.isalpha()])
+def caesar_cipher(message: str, key=KEY, use_polish: bool=False):
+    message = "".join([c for c in message.lower() if c.isalpha()])
     encrypted_message=""
     if use_polish:
         alphabet = POLISH_ALPHABET
@@ -18,8 +18,8 @@ def caesar_cipher(text: str, key=KEY, use_polish: bool=False):
     return encrypted_message
 
 
-def caesar_cipher_decypted(text: str, key=KEY, use_polish: bool=False):
-    message = "".join([c for c in text.lower() if c.isalpha()])
+def caesar_cipher_decypted(message: str, key=KEY, use_polish: bool=False):
+    message = "".join([c for c in message.lower() if c.isalpha()])
     encrypted_message=""
     if use_polish:
         alphabet = POLISH_ALPHABET
